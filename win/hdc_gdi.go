@@ -889,6 +889,7 @@ func (hdc HDC) WidenPath() {
 	}
 }
 
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-startdocw
 func (hdc HDC) StartDoc(docName string, outputFile string) error {
 	var res DOCINFO
 	res.CbSize = int(unsafe.Sizeof(res))
@@ -905,6 +906,7 @@ func (hdc HDC) StartDoc(docName string, outputFile string) error {
 	return errco.ERROR(err)
 }
 
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-enddoc
 func (hdc HDC) EndDoc() error {
 	addr := proc.EndDoc.Addr()
 	ret, _, err := syscall.SyscallN(addr, uintptr(hdc))
@@ -913,4 +915,46 @@ func (hdc HDC) EndDoc() error {
 	}
 	// TODO: what if ret returns 0?
 	return errco.ERROR(err)
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setmapmode
+// returns previous map mode
+func (hdc HDC) SetMapMode(mapMode co.MM) (co.MM, error) {
+	addr := proc.SetMapMode.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hdc), uintptr(mapMode))
+	if ret == 0 {
+		// TODO: is errco>ERROR() correct ?
+		return co.MM(0), errco.ERROR(err)
+	}
+	return co.MM(ret), nil
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createdcw
+func CreateDC(driver string, device string, port string, pdm *DEVMODE) (HDC, error) {
+	addr := proc.CreateDC.Addr()
+	ret, _, err := syscall.SyscallN(addr, fromUtf8(driver), fromUtf8(device), fromUtf8(port), fromPtr(pdm))
+	if ret == 0 {
+		return HDC(0), errco.ERROR(err)
+	}
+	return HDC(ret), nil
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpage
+func (hdc HDC) StartPage() error {
+	addr := proc.StartPage.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hdc))
+	if int(ret) <= 0 {
+		return errco.ERROR(err)
+	}
+	return nil
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpage
+func (hdc HDC) EndtPage() error {
+	addr := proc.EndPage.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hdc))
+	if int(ret) <= 0 {
+		return errco.ERROR(err)
+	}
+	return nil
 }

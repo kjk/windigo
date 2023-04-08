@@ -11,6 +11,7 @@ var (
 	GetDefaultPrinter  = winspool.NewProc("GetDefaultPrinterW")
 	EnumPrinters       = winspool.NewProc("EnumPrintersW")
 	DeviceCapabilities = winspool.NewProc("DeviceCapabilitiesW")
+	DocumentProperties = winspool.NewProc("DocumentProperties")
 
 	ClosePrinter = sspool.NewProc("ClosePrinter")
 )

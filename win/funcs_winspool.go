@@ -20,6 +20,9 @@ type PRINTER_INFO_5W struct {
 }
 
 func fromPtr[T any](v *T) uintptr {
+	if v == nil {
+		return 0
+	}
 	return uintptr(unsafe.Pointer(v))
 }
 
@@ -28,6 +31,9 @@ func fromBuf[T any](v []T) uintptr {
 }
 
 func fromUtf8(s string) uintptr {
+	if s == "" {
+		return 0
+	}
 	return uintptr(unsafe.Pointer(Str.ToNativePtr(s)))
 }
 
@@ -239,4 +245,21 @@ func DeviceCapabilitiesVersion(device string, port string) int {
 func DeviceCapabilitesPrinterMem(device string, port string) int {
 	ret := DeviceCapabilitiesOne(device, port, co.DM(co.DC_PRINTERMEM))
 	return int(ret)
+}
+
+/*
+LONG DocumentProperties(
+
+	_In_  HWND     hWnd,
+	_In_  HANDLE   hPrinter,
+	_In_  LPTSTR   pDeviceName,
+	_Out_ PDEVMODE pDevModeOutput,
+	_In_  PDEVMODE pDevModeInput,
+	_In_  DWORD    fMode
+
+);
+*/
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/documentproperties
+func DocumentProperties(hwnd HWND, hPrinter HANDLE, deviceName string, devModeIn *DEVMODE, fMode uint32) {
+	panic("NYI")
 }
