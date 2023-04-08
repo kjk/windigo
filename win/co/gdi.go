@@ -548,3 +548,75 @@ const (
 	QDI_DIBTOSCREEN QDI = 4
 	QDI_STRETCHDIB  QDI = 8
 )
+
+// also DM_UPDATE etc. in windspool.go
+type DM uint32
+
+/* field selection bits */
+const (
+	DM_ORIENTATION        DM = 0x00000001
+	DM_PAPERSIZE          DM = 0x00000002
+	DM_PAPERLENGTH        DM = 0x00000004
+	DM_PAPERWIDTH         DM = 0x00000008
+	DM_SCALE              DM = 0x00000010
+	DM_POSITION           DM = 0x00000020
+	DM_NUP                DM = 0x00000040
+	DM_DISPLAYORIENTATION DM = 0x00000080
+	DM_COPIES             DM = 0x00000100
+	DM_DEFAULTSOURCE      DM = 0x00000200
+	DM_PRINTQUALITY       DM = 0x00000400
+	DM_COLOR              DM = 0x00000800
+	DM_DUPLEX             DM = 0x00001000
+	DM_YRESOLUTION        DM = 0x00002000
+	DM_TTOPTION           DM = 0x00004000
+	DM_COLLATE            DM = 0x00008000
+	DM_FORMNAME           DM = 0x00010000
+	DM_LOGPIXELS          DM = 0x00020000
+	DM_BITSPERPEL         DM = 0x00040000
+	DM_PELSWIDTH          DM = 0x00080000
+	DM_PELSHEIGHT         DM = 0x00100000
+	DM_DISPLAYFLAGS       DM = 0x00200000
+	DM_DISPLAYFREQUENCY   DM = 0x00400000
+	DM_ICMMETHOD          DM = 0x00800000
+	DM_ICMINTENT          DM = 0x01000000
+	DM_MEDIATYPE          DM = 0x02000000
+	DM_DITHERTYPE         DM = 0x04000000
+	DM_PANNINGWIDTH       DM = 0x08000000
+	DM_PANNINGHEIGHT      DM = 0x10000000
+	DM_DISPLAYFIXEDOUTPUT DM = 0x20000000
+)
+
+type RC uint32
+
+/* Raster Capabilities */
+const (
+	RC_NONE         RC = 0
+	RC_BITBLT       RC = 1      /* Can do standard BLT.             */
+	RC_BANDING      RC = 2      /* Device requires banding support  */
+	RC_SCALING      RC = 4      /* Device requires scaling support  */
+	RC_BITMAP64     RC = 8      /* Device can support >64K bitmap   */
+	RC_GDI20_OUTPUT RC = 0x0010 /* has 2.0 output calls         */
+	RC_GDI20_STATE  RC = 0x0020
+	RC_SAVEBITMAP   RC = 0x0040
+	RC_DI_BITMAP    RC = 0x0080 /* supports DIB to memory       */
+	RC_PALETTE      RC = 0x0100 /* supports a palette           */
+	RC_DIBTODEV     RC = 0x0200 /* supports DIBitsToDevice      */
+	RC_BIGFONT      RC = 0x0400 /* supports >64K fonts          */
+	RC_STRETCHBLT   RC = 0x0800 /* supports StretchBlt          */
+	RC_FLOODFILL    RC = 0x1000 /* supports FloodFill           */
+	RC_STRETCHDIB   RC = 0x2000 /* supports StretchDIBits       */
+	RC_OP_DX_OUTPUT RC = 0x4000
+	RC_DEVBITS      RC = 0x8000
+)
+
+type SB uint32
+
+/* Shading and blending caps */
+const (
+	SB_NONE          SB = 0x00000000
+	SB_CONST_ALPHA   SB = 0x00000001
+	SB_PIXEL_ALPHA   SB = 0x00000002
+	SB_PREMULT_ALPHA SB = 0x00000004
+	SB_GRAD_RECT     SB = 0x00000010
+	SB_GRAD_TRI      SB = 0x00000020
+)
