@@ -185,3 +185,11 @@ type TEXTMETRIC struct {
 	TmPitchAndFamily   uint8
 	TmCharSet          co.CHARSET
 }
+
+type DOCINFO struct {
+	CbSize   int
+	DocName  *uint16
+	Output   *uint16
+	Datatype *uint16
+	Type     co.DOCINFO
+}

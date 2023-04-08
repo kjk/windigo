@@ -888,3 +888,29 @@ func (hdc HDC) WidenPath() {
 		panic(errco.ERROR(err))
 	}
 }
+
+func (hdc HDC) StartDoc(docName string, outputFile string) error {
+	var res DOCINFO
+	res.CbSize = int(unsafe.Sizeof(res))
+	res.DocName = Str.ToNativePtr(docName)
+	if outputFile != "" {
+		res.Output = Str.ToNativePtr(outputFile)
+	}
+	addr := proc.StartDoc.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hdc), fromPtr(&res))
+	if ret > 0 {
+		return nil
+	}
+	// TODO: what if ret returns 0?
+	return errco.ERROR(err)
+}
+
+func (hdc HDC) EndDoc() error {
+	addr := proc.EndDoc.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hdc))
+	if ret > 0 {
+		return nil
+	}
+	// TODO: what if ret returns 0?
+	return errco.ERROR(err)
+}

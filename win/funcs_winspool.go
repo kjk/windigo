@@ -172,6 +172,10 @@ func DeviceCapabilitiesPaperNames(device string, port string) ([]string, error) 
 	return DeviceCapabilitiesFixedStrings(device, port, co.DC_PAPERNAMES, 64)
 }
 
+func DeviceCapabilitiesPersonality(device string, port string) ([]string, error) {
+	return DeviceCapabilitiesFixedStrings(device, port, co.DC_PERSONALITY, 32)
+}
+
 func DeviceCapabilitiesOne(device string, port string, flags co.DM) uintptr {
 	addr := proc.DeviceCapabilities.Addr()
 	ret, _, _ := syscall.SyscallN(addr, fromUtf8(device), fromUtf8(port), uintptr(flags), 0, 0)
@@ -224,5 +228,15 @@ func DeviceCapabilitiesSize(device string, port string) uint16 {
 // returns 0, 90, 270
 func DeviceCapabilitiesOrientation(device string, port string) int {
 	ret := DeviceCapabilitiesOne(device, port, co.DM(co.DC_ORIENTATION))
+	return int(ret)
+}
+
+func DeviceCapabilitiesVersion(device string, port string) int {
+	ret := DeviceCapabilitiesOne(device, port, co.DM(co.DC_VERSION))
+	return int(ret)
+}
+
+func DeviceCapabilitesPrinterMem(device string, port string) int {
+	ret := DeviceCapabilitiesOne(device, port, co.DM(co.DC_PRINTERMEM))
 	return int(ret)
 }

@@ -336,3 +336,11 @@ const (
 	TPM_LAYOUTRTL       TPM = 0x8000
 	TPM_WORKAREA        TPM = 0x1_0000
 )
+
+// for StartDoc
+type DOCINFO uint32
+
+const (
+	DI_APPBANDING            DOCINFO = 0x00000001
+	DI_ROPS_READ_DESTINATION DOCINFO = 0x00000002
+)
