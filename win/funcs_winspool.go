@@ -90,16 +90,6 @@ func GetDefaultPrinter() (string, error) {
 
 }
 
-/*
-int DeviceCapabilitiesW(
-  [in]  LPCWSTR        pDevice,
-  [in]  LPCWSTR        pPort,
-  [in]  WORD           fwCapability,
-  [out] LPWSTR         pOutput,
-  [in]  const DEVMODEW *pDevMode
-);
-*/
-
 // https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-devicecapabilitiesw
 
 func DeviceCapabilitiesWORD(device string, port string, dc co.DC) ([]uint16, error) {
@@ -262,4 +252,53 @@ LONG DocumentProperties(
 // https://learn.microsoft.com/en-us/windows/win32/printdocs/documentproperties
 func DocumentProperties(hwnd HWND, hPrinter HANDLE, deviceName string, devModeIn *DEVMODE, fMode uint32) {
 	panic("NYI")
+}
+
+type HPRINTER HANDLE
+
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/openprinter
+func OpenPrinter(printerName string, printerDefaults *PRINTER_DEFAULTS) (HPRINTER, error) {
+	addr := proc.OpenPrinter.Addr()
+	var hout HPRINTER
+	ret, _, err := syscall.SyscallN(addr, fromUtf8(printerName), fromPtr(&hout), fromPtr(printerDefaults))
+	if ret == 0 {
+		return 0, errco.ERROR(err)
+	}
+	return hout, nil
+}
+
+// Printer option flags that can be passed to OpenPrinter2 for
+// controlling whether the cached or non cached handle is used.
+type PRINTER_OPTION uint32
+
+const (
+	PRINTER_OPTION_NO_CACHE       PRINTER_OPTION = 1 << 0
+	PRINTER_OPTION_CACHE          PRINTER_OPTION = 1 << 1
+	PRINTER_OPTION_CLIENT_CHANGE  PRINTER_OPTION = 1 << 2
+	PRINTER_OPTION_NO_CLIENT_DATA PRINTER_OPTION = 1 << 3
+)
+
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/openprinter2
+func OpenPrinter2(printerName string, printerDefaults *PRINTER_DEFAULTS, options PRINTER_OPTION) (HPRINTER, error) {
+	addr := proc.OpenPrinter2.Addr()
+	var hout HPRINTER
+	opts := PRINTER_OPTIONS{
+		Flags: options,
+	}
+	opts.CbSize = uint(unsafe.Sizeof(opts))
+	ret, _, err := syscall.SyscallN(addr, fromUtf8(printerName), fromPtr(&hout), fromPtr(printerDefaults), fromPtr(&opts))
+	if ret == 0 {
+		return 0, errco.ERROR(err)
+	}
+	return hout, nil
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/closeprinter
+func ClosePrinter(hprint HPRINTER) error {
+	addr := proc.ClosePrinter.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hprint))
+	if ret == 0 {
+		return errco.ERROR(err)
+	}
+	return nil
 }
