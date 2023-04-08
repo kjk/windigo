@@ -19,12 +19,16 @@ type PRINTER_INFO_5W struct {
 	TransmissionRetryTimeout uint32
 }
 
-func fromUint32Ptr(v *uint32) uintptr {
+func fromPtr[T any](v *T) uintptr {
 	return uintptr(unsafe.Pointer(v))
 }
 
-func fromBuf(v []byte) uintptr {
+func fromBuf[T any](v []T) uintptr {
 	return uintptr(unsafe.Pointer(&v[0]))
+}
+
+func fromUtf8(s string) uintptr {
+	return uintptr(unsafe.Pointer(Str.ToNativePtr(s)))
 }
 
 type PrinterInfo struct {
@@ -39,10 +43,10 @@ func EnumPrinters(dwFlags co.PRINTER_ENUM) ([]PrinterInfo, error) {
 	var cbNeeded uint32
 	var nPrinters uint32
 	addr := proc.EnumPrinters.Addr()
-	syscall.SyscallN(addr, uintptr(dwFlags), 0, 5, 0, 0, fromUint32Ptr(&cbNeeded), fromUint32Ptr(&nPrinters))
+	syscall.SyscallN(addr, uintptr(dwFlags), 0, 5, 0, 0, fromPtr(&cbNeeded), fromPtr(&nPrinters))
 	buf := make([]byte, cbNeeded)
 	cbBuf := cbNeeded
-	res, _, err := syscall.SyscallN(addr, uintptr(dwFlags), 0, 5, fromBuf(buf), uintptr(cbBuf), fromUint32Ptr(&cbNeeded), fromUint32Ptr(&nPrinters))
+	res, _, err := syscall.SyscallN(addr, uintptr(dwFlags), 0, 5, fromBuf(buf), uintptr(cbBuf), fromPtr(&cbNeeded), fromPtr(&nPrinters))
 	if res == 0 {
 		// TODO: errco.ERROR(res) ?
 		return nil, errco.ERROR(err)
@@ -68,8 +72,9 @@ func EnumPrinters(dwFlags co.PRINTER_ENUM) ([]PrinterInfo, error) {
 func GetDefaultPrinter() (string, error) {
 	var buf [512 + 1]uint16
 	var lenInOut = uint32(len(buf))
-	ret, _, _ := syscall.SyscallN(proc.GetDefaultPrinter.Addr(),
-		uintptr(unsafe.Pointer(&buf[0])), uintptr(unsafe.Pointer(&lenInOut)))
+	addr := proc.GetDefaultPrinter.Addr()
+	ret, _, _ := syscall.SyscallN(addr,
+		fromBuf(buf[:]), fromPtr(&lenInOut))
 	// TODO: handle ret == ERROR_INSUFFICIENT_BUFFER and ERROR_FILE_NOT_FOUND
 	// or return an error
 	if ret == 0 {
@@ -77,4 +82,59 @@ func GetDefaultPrinter() (string, error) {
 	}
 	return Str.FromNativeSlice(buf[:]), nil
 
+}
+
+/*
+int DeviceCapabilitiesW(
+  [in]  LPCWSTR        pDevice,
+  [in]  LPCWSTR        pPort,
+  [in]  WORD           fwCapability,
+  [out] LPWSTR         pOutput,
+  [in]  const DEVMODEW *pDevMode
+);
+*/
+
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-devicecapabilitiesw
+
+func DeviceCapabilitiesBins(device string, port string) ([]uint16, error) {
+	addr := proc.DeviceCapabilities.Addr()
+	ret, _, _ := syscall.SyscallN(addr, fromUtf8(device), fromUtf8(port), uintptr(co.DC_BINS), 0, 0)
+	if int(ret) < 0 {
+		return nil, errco.ERROR(ret)
+	}
+	if ret == 0 {
+		return nil, nil
+	}
+	bins := make([]uint16, ret)
+	ret, _, _ = syscall.SyscallN(addr, fromUtf8(device), fromUtf8(port), uintptr(co.DC_BINS), fromBuf(bins), 0)
+	if int(ret) < 0 {
+		return nil, errco.ERROR(ret)
+	}
+	return bins, nil
+}
+
+func DeviceCapabilitiesBinNames(device string, port string) ([]string, error) {
+	var bins []string
+	addr := proc.DeviceCapabilities.Addr()
+	ret, _, _ := syscall.SyscallN(addr, fromUtf8(device), fromUtf8(port), uintptr(co.DC_BINS), 0, 0)
+	if int(ret) < 0 {
+		return nil, errco.ERROR(ret)
+	}
+	if ret == 0 {
+		return nil, nil
+	}
+	nBins := int(ret)
+	binNameSize := 24
+	buf := make([]uint16, nBins*binNameSize)
+	ret, _, _ = syscall.SyscallN(addr, fromUtf8(device), fromUtf8(port), uintptr(co.DC_BINNAMES), fromBuf(buf), 0)
+	if int(ret) < 0 {
+		return nil, errco.ERROR(ret)
+	}
+	n := 0
+	for i := 0; i < nBins; i++ {
+		s := Str.FromNativeSlice(buf[n : n+binNameSize])
+		bins = append(bins, s)
+		n += binNameSize
+	}
+	return bins, nil
 }
