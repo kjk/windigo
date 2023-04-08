@@ -14,7 +14,7 @@ import (
 type PRINTER_INFO_5W struct {
 	PrinterName              *uint16
 	PortName                 *uint16
-	Attributes               uint32
+	Attributes               co.PRINTER_ATTRIBUTE
 	DeviceNotSelectedTimeout uint32
 	TransmissionRetryTimeout uint32
 }
@@ -30,7 +30,7 @@ func fromBuf(v []byte) uintptr {
 type PrinterInfo struct {
 	PrinterName              string
 	PortName                 string
-	Attributes               uint32
+	Attributes               co.PRINTER_ATTRIBUTE
 	DeviceNotSelectedTimeout uint32
 	TransmissionRetryTimeout uint32
 }
