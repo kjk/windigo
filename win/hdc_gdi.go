@@ -958,3 +958,13 @@ func (hdc HDC) EndtPage() error {
 	}
 	return nil
 }
+
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-abortdoc
+func (hdc HDC) AbortDoc() error {
+	addr := proc.AbortDoc.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hdc))
+	if int(ret) <= 0 {
+		return errco.ERROR(err)
+	}
+	return nil
+}

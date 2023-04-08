@@ -9,6 +9,7 @@ import (
 var (
 	gdi32 = syscall.NewLazyDLL("gdi32.dll")
 
+	AbortDoc               = gdi32.NewProc("AbortDoc")
 	AbortPath              = gdi32.NewProc("AbortPath")
 	AngleArc               = gdi32.NewProc("AngleArc")
 	Arc                    = gdi32.NewProc("Arc")

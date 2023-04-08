@@ -506,3 +506,45 @@ const (
 	MM_ISOTROPIC   MM = 7
 	MM_ANISOTROPIC MM = 8
 )
+
+/* Spooler Error Codes */
+type SP int
+
+const (
+	SP_NOTREPORTED SP = 0x4000
+	SP_ERROR       SP = -1
+	SP_APPABORT    SP = -2
+	SP_USERABORT   SP = -3
+	SP_OUTOFDISK   SP = -4
+	SP_OUTOFMEMORY SP = -5
+)
+
+/* Object Definitions for EnumObjects() */
+type OBJ uint32
+
+const (
+	OBJ_PEN         OBJ = 1
+	OBJ_BRUSH       OBJ = 2
+	OBJ_DC          OBJ = 3
+	OBJ_METADC      OBJ = 4
+	OBJ_PAL         OBJ = 5
+	OBJ_FONT        OBJ = 6
+	OBJ_BITMAP      OBJ = 7
+	OBJ_REGION      OBJ = 8
+	OBJ_METAFILE    OBJ = 9
+	OBJ_MEMDC       OBJ = 10
+	OBJ_EXTPEN      OBJ = 11
+	OBJ_ENHMETADC   OBJ = 12
+	OBJ_ENHMETAFILE OBJ = 13
+	OBJ_COLORSPACE  OBJ = 14
+)
+
+/* Flag returned from QUERYDIBSUPPORT */
+type QDI int
+
+const (
+	QDI_SETDIBITS   QDI = 1
+	QDI_GETDIBITS   QDI = 2
+	QDI_DIBTOSCREEN QDI = 4
+	QDI_STRETCHDIB  QDI = 8
+)
