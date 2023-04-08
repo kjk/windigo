@@ -6,14 +6,14 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/co"
-	"github.com/rodrigocfd/windigo/win/com/com"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
-	"github.com/rodrigocfd/windigo/win/com/shell/shellco"
-	"github.com/rodrigocfd/windigo/win/com/shell/shellvt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/co"
+	"github.com/kjk/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/shell/shellco"
+	"github.com/kjk/windigo/win/com/shell/shellvt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishellitem

@@ -5,7 +5,7 @@ package win
 import (
 	"io"
 
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // High-level abstraction to HFILE, providing several operations.

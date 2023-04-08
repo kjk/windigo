@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Can be created with NewGuidFromClsid() or NewGuidFromIid().

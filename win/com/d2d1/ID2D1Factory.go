@@ -6,13 +6,13 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/com"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
-	"github.com/rodrigocfd/windigo/win/com/d2d1/d2d1co"
-	"github.com/rodrigocfd/windigo/win/com/d2d1/d2d1vt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/d2d1/d2d1co"
+	"github.com/kjk/windigo/win/com/d2d1/d2d1vt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/d2d1/nn-d2d1-id2d1factory

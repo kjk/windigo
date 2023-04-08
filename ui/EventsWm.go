@@ -3,10 +3,10 @@
 package ui
 
 import (
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/ui/wm"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/ui/wm"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Ordinary events for WM messages and WM_TIMER.

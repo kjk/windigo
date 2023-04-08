@@ -3,8 +3,8 @@
 package win
 
 import (
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
 )
 
 // This helper method loads icons from the shell, used by Windows Explorer to

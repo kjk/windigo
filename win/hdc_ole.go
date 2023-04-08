@@ -3,7 +3,7 @@
 package win
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Converts HIMETRIC units to pixels.

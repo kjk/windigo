@@ -6,12 +6,12 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/autom"
-	"github.com/rodrigocfd/windigo/win/com/com"
-	"github.com/rodrigocfd/windigo/win/com/dshow/dshowco"
-	"github.com/rodrigocfd/windigo/win/com/dshow/dshowvt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/autom"
+	"github.com/kjk/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/dshow/dshowco"
+	"github.com/kjk/windigo/win/com/dshow/dshowvt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/control/nn-control-imediacontrol

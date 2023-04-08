@@ -5,7 +5,7 @@ package win
 import (
 	"syscall"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
+	"github.com/kjk/windigo/internal/proc"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-gdiflush

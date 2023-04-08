@@ -5,7 +5,7 @@ package win
 import (
 	"syscall"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
+	"github.com/kjk/windigo/internal/proc"
 )
 
 // Handle to an OLE block of memory.

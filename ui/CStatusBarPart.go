@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/co"
 )
 
 // A single part of a StatusBar.

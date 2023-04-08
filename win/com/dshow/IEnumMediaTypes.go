@@ -6,10 +6,10 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win/com/com"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
-	"github.com/rodrigocfd/windigo/win/com/dshow/dshowvt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/dshow/dshowvt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/strmif/nn-strmif-ienummediatypes

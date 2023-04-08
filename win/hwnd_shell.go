@@ -5,8 +5,8 @@ package win
 import (
 	"syscall"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/internal/util"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/internal/util"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-dragacceptfiles

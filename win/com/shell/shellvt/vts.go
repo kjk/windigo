@@ -3,7 +3,7 @@
 package shellvt
 
 import (
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/com/comvt"
 )
 
 // IDataObject virtual table.

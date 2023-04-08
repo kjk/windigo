@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/rodrigocfd/windigo/win/com/autom/automco"
+	"github.com/kjk/windigo/win/com/autom/automco"
 )
 
 // Exception information from an IDispatch.Invoke() call.

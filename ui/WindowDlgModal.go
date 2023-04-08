@@ -3,7 +3,7 @@
 package ui
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Implements WindowModal interface.

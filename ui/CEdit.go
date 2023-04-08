@@ -6,9 +6,9 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/ui/wm"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/ui/wm"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Native edit control.

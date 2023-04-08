@@ -3,7 +3,7 @@
 package automvt
 
 import (
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/com/comvt"
 )
 
 // IDispatch virtual table.

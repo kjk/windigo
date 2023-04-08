@@ -1,6 +1,6 @@
-[![Go Reference](https://pkg.go.dev/badge/github.com/rodrigocfd/windigo.svg)](https://pkg.go.dev/github.com/rodrigocfd/windigo)
-[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/rodrigocfd/windigo.svg)](https://github.com/rodrigocfd/windigo)
-[![Lines of code](https://tokei.rs/b1/github/rodrigocfd/windigo)](https://github.com/rodrigocfd/windigo)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kjk/windigo.svg)](https://pkg.go.dev/github.com/kjk/windigo)
+[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/rodrigocfd/windigo.svg)](https://github.com/kjk/windigo)
+[![Lines of code](https://tokei.rs/b1/github/rodrigocfd/windigo)](https://github.com/kjk/windigo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Windigo
@@ -64,9 +64,9 @@ import (
     "fmt"
     "runtime"
 
-    "github.com/rodrigocfd/windigo/ui"
-    "github.com/rodrigocfd/windigo/win"
-    "github.com/rodrigocfd/windigo/win/co"
+    "github.com/kjk/windigo/ui"
+    "github.com/kjk/windigo/win"
+    "github.com/kjk/windigo/win/co"
 )
 
 func main() {

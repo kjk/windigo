@@ -5,7 +5,7 @@ package win
 import (
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Variant type for a resource type.

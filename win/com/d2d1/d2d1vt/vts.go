@@ -3,7 +3,7 @@
 package d2d1vt
 
 import (
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/com/comvt"
 )
 
 // ID2D1Factory virtual table.

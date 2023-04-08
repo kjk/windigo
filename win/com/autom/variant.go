@@ -9,12 +9,12 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/autom/automco"
-	"github.com/rodrigocfd/windigo/win/com/com"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/autom/automco"
+	"github.com/kjk/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/com/comvt"
 )
 
 // OLE Automation VARIANT type.

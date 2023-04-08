@@ -3,8 +3,8 @@
 package dshowvt
 
 import (
-	"github.com/rodrigocfd/windigo/win/com/autom/automvt"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/autom/automvt"
+	"github.com/kjk/windigo/win/com/com/comvt"
 )
 
 // IBaseFilter virtual table.

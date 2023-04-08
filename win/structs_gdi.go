@@ -6,7 +6,7 @@ import (
 	"encoding/binary"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-bitmap

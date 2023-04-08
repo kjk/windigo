@@ -3,7 +3,7 @@
 package shell
 
 import (
-	"github.com/rodrigocfd/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/com"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-idataobject

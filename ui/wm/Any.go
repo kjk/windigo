@@ -3,7 +3,7 @@
 package wm
 
 import (
-	"github.com/rodrigocfd/windigo/win"
+	"github.com/kjk/windigo/win"
 )
 
 // Raw message parameters to any message: WPARAM and LPARAM.

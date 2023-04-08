@@ -3,9 +3,9 @@
 package ui
 
 import (
-	"github.com/rodrigocfd/windigo/ui/wm"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/ui/wm"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Horizontal action to be performed when the parent window is resized.

@@ -3,7 +3,7 @@
 package win
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // This helper method appends a new item to the menu, by calling

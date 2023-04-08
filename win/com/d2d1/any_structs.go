@@ -3,8 +3,8 @@
 package d2d1
 
 import (
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/d2d1/d2d1co"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/d2d1/d2d1co"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/d2d1/ns-d2d1-d2d1_factory_options

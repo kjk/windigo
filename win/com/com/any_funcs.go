@@ -6,12 +6,12 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/co"
-	"github.com/rodrigocfd/windigo/win/com/com/comco"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/co"
+	"github.com/kjk/windigo/win/com/com/comco"
+	"github.com/kjk/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // Used to retrieve class IDs to create COM Automation objects.

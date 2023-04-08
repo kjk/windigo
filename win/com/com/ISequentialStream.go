@@ -6,8 +6,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-isequentialstream

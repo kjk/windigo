@@ -1,3 +1,3 @@
-module github.com/rodrigocfd/windigo
+module github.com/kjk/windigo
 
 go 1.20

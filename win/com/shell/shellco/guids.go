@@ -3,7 +3,7 @@
 package shellco
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Shell COM CLSIDs.

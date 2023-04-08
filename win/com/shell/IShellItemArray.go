@@ -6,11 +6,11 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win/com/com"
-	"github.com/rodrigocfd/windigo/win/com/com/comvt"
-	"github.com/rodrigocfd/windigo/win/com/shell/shellco"
-	"github.com/rodrigocfd/windigo/win/com/shell/shellvt"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/win/com/com"
+	"github.com/kjk/windigo/win/com/com/comvt"
+	"github.com/kjk/windigo/win/com/shell/shellco"
+	"github.com/kjk/windigo/win/com/shell/shellvt"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishellitemarray

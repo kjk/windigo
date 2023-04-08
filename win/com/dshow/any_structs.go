@@ -3,9 +3,9 @@
 package dshow
 
 import (
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/com"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/com"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/strmif/ns-strmif-am_media_type

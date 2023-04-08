@@ -5,8 +5,8 @@ package autom
 import (
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/autom/automco"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/autom/automco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/oaidl/ns-oaidl-arraydesc

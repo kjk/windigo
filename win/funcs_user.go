@@ -9,10 +9,10 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-adjustwindowrectex

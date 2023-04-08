@@ -3,8 +3,8 @@
 package shell
 
 import (
-	"github.com/rodrigocfd/windigo/win"
-	"github.com/rodrigocfd/windigo/win/com/shell/shellco"
+	"github.com/kjk/windigo/win"
+	"github.com/kjk/windigo/win/com/shell/shellco"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/shtypes/ns-shtypes-comdlg_filterspec

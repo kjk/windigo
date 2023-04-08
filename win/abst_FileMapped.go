@@ -6,8 +6,8 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
 )
 
 // High-level abstraction to HFILEMAP, providing several operations.

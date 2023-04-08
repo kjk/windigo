@@ -3,7 +3,7 @@
 package ui
 
 import (
-	"github.com/rodrigocfd/windigo/win"
+	"github.com/kjk/windigo/win"
 )
 
 // Any window.

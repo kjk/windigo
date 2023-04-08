@@ -3,8 +3,8 @@
 package win
 
 import (
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
 )
 
 // 📑 https://docs.microsoft.com/en-us/windows/win32/api/verrsrc/ns-verrsrc-vs_fixedfileinfo

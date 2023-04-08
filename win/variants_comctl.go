@@ -3,7 +3,7 @@
 package win
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Variant type for an icon identifier for TASKDIALOGCONFIG.

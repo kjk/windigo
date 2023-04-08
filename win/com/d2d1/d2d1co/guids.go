@@ -3,7 +3,7 @@
 package d2d1co
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Direct2D COM IIDs.

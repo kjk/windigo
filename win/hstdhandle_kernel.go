@@ -6,10 +6,10 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/proc"
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
-	"github.com/rodrigocfd/windigo/win/errco"
+	"github.com/kjk/windigo/internal/proc"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
+	"github.com/kjk/windigo/win/errco"
 )
 
 // A handle to a standard device (standard input, standard output, or standard

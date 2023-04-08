@@ -5,8 +5,8 @@ package win
 import (
 	"unsafe"
 
-	"github.com/rodrigocfd/windigo/internal/util"
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/internal/util"
+	"github.com/kjk/windigo/win/co"
 )
 
 // Variant type for a class name identifier, which can be empty, an ATOM or a

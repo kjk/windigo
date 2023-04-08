@@ -3,7 +3,7 @@
 package comco
 
 import (
-	"github.com/rodrigocfd/windigo/win/co"
+	"github.com/kjk/windigo/win/co"
 )
 
 // IDL COM IIDs.
