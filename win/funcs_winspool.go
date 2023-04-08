@@ -294,11 +294,90 @@ func OpenPrinter2(printerName string, printerDefaults *PRINTER_DEFAULTS, options
 }
 
 // https://learn.microsoft.com/en-us/windows/win32/printdocs/closeprinter
-func ClosePrinter(hprint HPRINTER) error {
+func (hprint HPRINTER) ClosePrinter() error {
 	addr := proc.ClosePrinter.Addr()
 	ret, _, err := syscall.SyscallN(addr, uintptr(hprint))
 	if ret == 0 {
 		return errco.ERROR(err)
 	}
 	return nil
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/printerproperties
+func (hprint HPRINTER) PrinterProperties(hwnd HWND) error {
+	addr := proc.PrinterProperties.Addr()
+	ret, _, err := syscall.SyscallN(addr, uintptr(hprint), uintptr(hwnd))
+	if ret == 0 {
+		return errco.ERROR(err)
+	}
+	return nil
+}
+
+/*
+BOOL GetPrinter(
+  _In_  HANDLE  hPrinter,
+  _In_  DWORD   Level,
+  _Out_ LPBYTE  pPrinter,
+  _In_  DWORD   cbBuf,
+  _Out_ LPDWORD pcbNeeded
+);
+*/
+
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/getprinter
+func GetPrinterRaw(hprint HPRINTER, level int) ([]byte, error) {
+	addr := proc.GetPrinter.Addr()
+	cbNeeded := uint32(0)
+	ret, _, err := syscall.SyscallN(addr, uintptr(level), 0, 0, fromPtr(&cbNeeded))
+	if ret == 0 {
+		return nil, errco.ERROR(err)
+	}
+	buf := make([]byte, int(cbNeeded))
+	ret, _, err = syscall.SyscallN(addr, uintptr(level), fromBuf(buf), uintptr(len(buf)), fromPtr(&cbNeeded))
+	if ret == 0 {
+		return nil, errco.ERROR(err)
+	}
+	return buf, nil
+}
+
+func (hprint HPRINTER) GetPrinterLevel2() (*PRINTER_INFO_2, error) {
+	d, err := GetPrinterRaw(hprint, 2)
+	if err != nil {
+		return nil, err
+	}
+	// TODO: not sure if this is valid
+	res := (*PRINTER_INFO_2)(unsafe.Pointer(&d[0]))
+	return res, nil
+}
+
+// https://learn.microsoft.com/en-us/windows/win32/printdocs/isvaliddevmode
+func IsValidDevmode(devMode *DEVMODE, devModeSize uint32) bool {
+	addr := proc.IsValidDevmode.Addr()
+	ret, _, _ := syscall.SyscallN(addr, fromPtr(devMode), uintptr(devModeSize))
+	return ret != 0
+}
+
+type PSECURITY_DESCRIPTOR uintptr
+
+type PRINTER_INFO_2 struct {
+	ServerName         *uint16
+	PrinterName        *uint16
+	ShareName          *uint16
+	PortName           *uint16
+	DriverName         *uint16
+	Comment            *uint16
+	Location           *uint16
+	DevMode            *DEVMODE
+	SepFile            *uint16
+	PrintProcessor     *uint16
+	Datatype           *uint16
+	Parameters         *uint16
+	SecurityDescriptor PSECURITY_DESCRIPTOR
+	Attributes         uint32
+	Priority           uint32
+	DefaultPriority    uint32
+	StartTime          uint32
+	UntilTime          uint32
+	Status             uint32
+	NumJobs            uint32
+	AveragePPM         uint32
 }

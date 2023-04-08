@@ -14,12 +14,12 @@ var (
 	DocumentProperties = winspool.NewProc("DocumentProperties")
 	OpenPrinter        = winspool.NewProc("OpenPrinterW")
 	OpenPrinter2       = winspool.NewProc("OpenPrinter2W")
+	PrinterProperties  = winspool.NewProc("PrinterProperties")
+	IsValidDevmode     = winspool.NewProc("IsValidDevmode")
+	GetPrinter         = winspool.NewProc("GetPrinterW")
 
-	GetPrinter        = winspool.NewProc("GetPrinterW")
-	GetPrinterData    = winspool.NewProc("GetPrinterDataW")
-	GetPrinterDataE   = winspool.NewProc("GetPrinterDataEx")
-	IsValidDevmode    = winspool.NewProc("IsValidDevmode")
-	PrinterProperties = winspool.NewProc("PrinterProperties")
+	//GetPrinterData    = winspool.NewProc("GetPrinterDataW")
+	//GetPrinterDataE   = winspool.NewProc("GetPrinterDataEx")
 
 	ClosePrinter = sspool.NewProc("ClosePrinter")
 )
